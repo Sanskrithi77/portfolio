@@ -118,8 +118,10 @@ main {
   overflow-y: auto;
   backface-visibility: hidden;
   /* Non-active faces sit invisibly in overlapping screen space and would
-     otherwise still intercept clicks; only the face currently facing the
-     viewer should be clickable. */
+     otherwise still intercept clicks on some desktop browsers; visibility
+     is the more reliable way to remove a 3D-rotated face from hit-testing,
+     pointer-events is kept as a belt-and-braces backup. */
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -129,6 +131,7 @@ main {
 .cube[data-side="left"]   .cube-face-left,
 .cube[data-side="top"]    .cube-face-top,
 .cube[data-side="bottom"] .cube-face-bottom {
+  visibility: visible;
   pointer-events: auto;
 }
 
