@@ -295,6 +295,10 @@ main {
   margin: 0 0 0.6rem;
 }
 
+.app-desc-long {
+  line-height: 1.55;
+}
+
 .visit-app {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -320,9 +324,16 @@ main {
   color: var(--accent);
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
 .contact-cta {
   display: inline-block;
-  margin-top: 1.2rem;
   padding: 0.85rem 1.6rem;
   background: var(--accent-2);
   color: var(--bg);
@@ -334,6 +345,17 @@ main {
 }
 
 .contact-cta:hover { transform: translateY(-2px); }
+
+.contact-cta-alt {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.contact-cta-alt:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1040px) {
