@@ -79,11 +79,6 @@ main {
 
 /* ---------- Cube mechanics ---------- */
 .scene {
-  /* Faces are pushed toward the viewer with translateZ, which under
-     perspective projection makes them render larger than --face-w/h
-     (scale factor = perspective / (perspective - translateZ)).
-     Size the scene generously and center the cube in it so that
-     enlargement never gets clipped. */
   width: calc(var(--face-w) * 1.4);
   height: calc(var(--face-h) * 1.4);
   perspective: 1600px;
@@ -115,17 +110,10 @@ main {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 2.6rem;
-  overflow: hidden;
+  overflow-y: auto;
   backface-visibility: hidden;
   visibility: hidden;
   pointer-events: none;
-}
-
-/* Enable scrolling only on faces that actually contain long lists/content */
-.cube-face-right,
-.cube-face-back,
-.cube-face-top {
-  overflow-y: auto;
 }
 
 .cube[data-side="front"]  .cube-face-front,
@@ -135,8 +123,7 @@ main {
 .cube[data-side="top"]    .cube-face-top,
 .cube[data-side="bottom"] .cube-face-bottom {
   visibility: visible;
-  pointer-events: auto !important;
-  z-index: 20;
+  pointer-events: auto;
 }
 
 .cube-face-front {
@@ -156,9 +143,6 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  pointer-events: auto !important;
-  z-index: 999;
-  isolation: isolate;
 }
 
 .show-front  { transform: rotateY(0deg); }
@@ -327,9 +311,6 @@ main {
   color: var(--text-dim);
   text-decoration: none;
   margin: 0 0 0.8rem;
-  position: relative;
-  z-index: 10;
-  pointer-events: auto;
   transition: color 0.2s ease;
 }
 
@@ -343,9 +324,6 @@ main {
   justify-content: center;
   gap: 0.8rem;
   margin-top: 1.2rem;
-  position: relative;
-  z-index: 10;
-  pointer-events: auto;
 }
 
 .contact-cta {
@@ -357,10 +335,6 @@ main {
   font-weight: 600;
   font-size: 0.9rem;
   border-radius: 2px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1000;
-  pointer-events: auto !important;
   transition: transform 0.2s ease;
 }
 
