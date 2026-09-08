@@ -28,3 +28,24 @@ document.querySelectorAll('.btn').forEach((btn) => {
 
 // Set the correct initial state on load (front is active by default)
 setActiveFace(cube.dataset.side);
+
+// Force click handling on contact buttons to bypass browser 3D hit-testing bugs
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('.contact-cta, .contact-line');
+  if (target) {
+    const href = target.getAttribute('href');
+    if (href) {
+      if (target.hasAttribute('download')) {
+        e.preventDefault();
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = 'resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        window.open(href, '_blank');
+      }
+    }
+  }
+});
