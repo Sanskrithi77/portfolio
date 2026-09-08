@@ -115,7 +115,7 @@ main {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 2.6rem;
-  overflow-y: auto;
+  overflow: hidden; /* Fixed: prevents invisible scroll layers from trapping desktop clicks */
   backface-visibility: hidden;
   /* Non-active faces sit invisibly in overlapping screen space and would
      otherwise still intercept clicks on some desktop browsers; visibility
@@ -123,6 +123,13 @@ main {
      pointer-events is kept as a belt-and-braces backup. */
   visibility: hidden;
   pointer-events: none;
+}
+
+/* Enable scrolling only on faces that actually contain long lists/content */
+.cube-face-right,
+.cube-face-back,
+.cube-face-top {
+  overflow-y: auto;
 }
 
 .cube[data-side="front"]  .cube-face-front,
