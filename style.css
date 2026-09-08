@@ -115,12 +115,8 @@ main {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 2.6rem;
-  overflow: hidden; /* Fixed: prevents invisible scroll layers from trapping desktop clicks */
+  overflow: hidden;
   backface-visibility: hidden;
-  /* Non-active faces sit invisibly in overlapping screen space and would
-     otherwise still intercept clicks on some desktop browsers; visibility
-     is the more reliable way to remove a 3D-rotated face from hit-testing,
-     pointer-events is kept as a belt-and-braces backup. */
   visibility: hidden;
   pointer-events: none;
 }
@@ -139,7 +135,8 @@ main {
 .cube[data-side="top"]    .cube-face-top,
 .cube[data-side="bottom"] .cube-face-bottom {
   visibility: visible;
-  pointer-events: auto;
+  pointer-events: auto !important;
+  z-index: 20;
 }
 
 .cube-face-front {
@@ -159,6 +156,8 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
+  pointer-events: auto;
+  z-index: 30;
 }
 
 .show-front  { transform: rotateY(0deg); }
@@ -327,6 +326,9 @@ main {
   color: var(--text-dim);
   text-decoration: none;
   margin: 0 0 0.8rem;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
   transition: color 0.2s ease;
 }
 
@@ -340,6 +342,9 @@ main {
   justify-content: center;
   gap: 0.8rem;
   margin-top: 1.2rem;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .contact-cta {
@@ -351,6 +356,10 @@ main {
   font-weight: 600;
   font-size: 0.9rem;
   border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
   transition: transform 0.2s ease;
 }
 
