@@ -156,8 +156,9 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  pointer-events: auto;
-  z-index: 30;
+  pointer-events: auto !important;
+  z-index: 999;
+  isolation: isolate;
 }
 
 .show-front  { transform: rotateY(0deg); }
@@ -358,8 +359,8 @@ main {
   border-radius: 2px;
   cursor: pointer;
   position: relative;
-  z-index: 20;
-  pointer-events: auto;
+  z-index: 1000;
+  pointer-events: auto !important;
   transition: transform 0.2s ease;
 }
 
